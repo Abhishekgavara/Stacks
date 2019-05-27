@@ -1,0 +1,59 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+
+class GFG {
+static class Stack{
+
+static Queue<Integer> q1=new LinkedList<Integer>();
+static Queue<Integer> q2=new LinkedList<Integer>();
+
+
+static int csize;
+
+Stack(){
+
+csize=0;
+
+}
+static void push(int x){
+   csize++;
+     q2.add(x);
+     while(!q1.isEmpty()){
+     q2.add(q1.peek());
+     q1.remove();
+     }
+     Queue<Integer>q=q1;
+     q1=q2;
+     q2=q;
+     
+     }
+     
+     
+static int pop(){
+int k=0;
+if(!q1.isEmpty())
+{
+k=q1.remove();
+csize--;
+}
+else
+System.out.println("empty wala");
+
+return k;
+}
+
+}
+
+
+
+
+
+	public static void main (String[] args) {
+		Stack s=new Stack();
+		s.push(1);
+		s.push(2);
+		s.push(3);
+		System.out.println(s.pop());
+	}
+}
