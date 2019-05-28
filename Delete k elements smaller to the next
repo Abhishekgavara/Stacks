@@ -1,0 +1,43 @@
+import java.util.*;
+
+class Test{
+    
+    static void Delete(int a[],int n,int k){
+        
+        Stack<Integer> s=new Stack<Integer>();
+        s.push(a[0]);
+        int count=0;
+        for(int i=1;i<n;i++){
+            
+            while(!s.isEmpty() && s.peek()<a[i] && count<k){
+                s.pop();
+                count++;
+                
+            }
+            s.push(a[i]);
+        }
+        int x=s.size();
+        int v[]=new int[x];
+        
+        while(!s.isEmpty()){
+        v[--x]=s.peek();
+        s.pop();
+            
+        }
+        for(int z:v){
+            
+            System.out.println(z);
+        }
+        
+        
+        
+    }
+    
+    public static void main(String[] args){
+        int a[]={20,10,25,30,40};
+        int n=a.length;
+        Delete(a,n,2);
+        
+    }
+    
+}
