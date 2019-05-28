@@ -1,0 +1,44 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+
+class Test {
+      static  Stack<Integer> tempStack=new Stack<Integer>();
+
+    public static Stack<Integer> sortStack(Stack<Integer> input ){
+        
+        
+        while(!input.isEmpty()){
+            
+            int k =input.pop();
+            
+            while(!tempStack.isEmpty() && k<tempStack.peek()){
+                
+                input.push(tempStack.pop());
+                
+                
+            }
+            tempStack.push(k);
+            
+            
+        }
+        return tempStack;
+    }
+	public static void main (String[] args) {
+ Stack<Integer> input = new Stack<Integer>(); 
+        input.add(34); 
+        input.add(3); 
+        input.add(31); 
+        input.add(98); 
+        input.add(92); 
+        input.add(23); 
+      
+        sortStack(input); 
+        System.out.println("Sorted numbers are:"); 
+      
+        while (!tempStack.empty()) 
+        { 
+            System.out.print(tempStack.pop()+" "); 
+        }  
+    } 	
+}
