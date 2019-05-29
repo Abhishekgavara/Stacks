@@ -1,0 +1,67 @@
+import java.util.*;
+class Test{
+    
+    static Queue<Integer> q=new LinkedList<Integer>();
+    
+    static boolean checksort(int n){
+        Stack<Integer> s=new Stack<Integer>();
+        int expected=1;
+        int k;
+        
+        while(q.size()!=0)
+        {
+            k=q.peek();
+            q.poll();
+        
+        
+        if(k==expected){
+            expected++;
+        }
+        else{
+            
+            if(s.size()==0)
+            s.push(k);
+            
+            else if(s.size()!=0 && s.peek()<k)
+            {
+                return false;
+            }
+            
+            else
+            s.push(k);
+            
+        }
+        
+    
+    while(s.size()!=0 && s.peek()==expected){
+        
+        s.pop();
+        expected++;
+    }
+        }
+    
+    if (s.size()==0 && expected-1==n)
+        return true;
+        
+        return false;
+    
+        
+        
+    }
+    public static void main(String[] args){
+        
+    q.add(5);
+    q.add(1);
+        q.add(2);
+    q.add(3);
+    q.add(4);
+
+int n=q.size();
+
+if(checksort(n))
+System.out.println("Yes");
+else
+System.out.println("No");
+    }
+    
+}
